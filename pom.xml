@@ -10,9 +10,9 @@
 	<version>v8.0.0.M20</version>
 
 	<name>WebGoat Parent Pom</name>
-	<description>Parent Pom for the WebGoat Project. A deliberately insecure Web Application</description>
-	<inceptionYear>2006</inceptionYear>
-	<url>https://github.com/WebGoat/WebGoat</url>
+	<description>PaceptionYear>
+	<url>https://github.comrent Pom for the WebGoat Project. A deliberately insecure Web Application</description>
+	<inceptionYear>2006</in/WebGoat/WebGoat</url>
 
 	<organization>
 		<name>OWASP</name>
@@ -324,24 +324,24 @@
 						</executions>
 					</plugin>
 					<plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.3</version>
-                <executions>
-                    <execution>
-                        <id>failing-on-high</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>findbugs</goal>
-                        </goals>
-                        <configuration>
-                            <failOnError>false</failOnError>
-                            <xmlOutput>true</xmlOutput>
-                            <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+            <version>3.1.1</version>
+            <configuration>
+                <effort>Max</effort>
+                <threshold>Low</threshold>
+                <failOnError>true</failOnError>
+                <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>
+                <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
+                <plugins>
+                    <plugin>
+                        <groupId>com.h3xstream.findsecbugs</groupId>
+                        <artifactId>findsecbugs-plugin</artifactId>
+                        <version>LATEST</version> <!-- Auto-update to the latest stable -->
+                    </plugin>
+                </plugins>
+            </configuration>
+        </plugin>
 				</plugins>
 			</build>
 		</profile>
